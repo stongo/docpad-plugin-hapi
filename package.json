@@ -1,0 +1,43 @@
+{
+  "name": "docpad-plugin-hapi",
+  "version": "2.0.1",
+  "description": "A fully customizable Hapi server for docpad.",
+  "homepage": "https://github.com/stongo/docpad-plugin-hapi",
+  "keywords": [
+    "docpad",
+    "docpad-plugin",
+    "server",
+    "hapi"
+  ],
+  "author": "Marcus Stong <stongo@gmail.com> (http://github.com/stongo)",
+  "maintainers": [
+    "Marcus Stong <stongo@gmail.com> (http://github.com/stongo)"
+  ],
+  "contributors": [
+    "Marcus Stong <stongo@gmail.com> (http://github.com/stongo)"
+  ],
+  "bugs": {
+    "url": "https://github.com/stongo/docpad-plugin-hapi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stongo/docpad-plugin-hapi.git"
+  },
+  "engines": {
+    "node": ">=0.8",
+    "docpad": ">=6"
+  },
+  "dependencies": {
+    "hapi": "2.x",
+    "wrench": "1.5.x",
+    "path": "~0.4.9"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2"
+  },
+  "main": "./out/hapi.plugin.js",
+  "scripts": {
+    "publish": "cake compile",
+    "test": "node ./out/hapi.test.js"
+  }
+}
