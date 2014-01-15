@@ -15,7 +15,7 @@ plugins:
                 method: 'POST'
                 path: '/test'
                 handler: (request, reply) ->
-                    reply('test');
+                    reply('test')
                 config:
                     validate:
                         query: false
@@ -24,7 +24,7 @@ plugins:
                 method: 'PUT'
                 path: '/hello'
                 handler: (request, reply) ->
-                    reply('hello');
+                    reply('hello')
             }
         ],
         config:
