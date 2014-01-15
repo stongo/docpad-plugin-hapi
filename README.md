@@ -8,7 +8,7 @@ In docpad.coffee or docpad.js, you can directly add routes as specified in [Hapi
 Also, server configuration can be overriden with the 'config' key
 
 ```coffee
-plugins
+plugins:
     hapi:
         routes: [
             {
