@@ -43,7 +43,10 @@ module.exports = (BasePlugin) ->
 		serverAfter: (opts, next) ->
 			# Get configs
 			docpad = @docpad
-			config = opts
+			config = @config
+
+			docpad.log "config: #{Object.keys(config)}"
+
 			port = docpad.getPort()
 			hostname = docpad.getHostname()
 

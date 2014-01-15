@@ -30,7 +30,8 @@
   "dependencies": {
     "hapi": "2.x",
     "wrench": "1.5.x",
-    "path": "~0.4.9"
+    "path": "~0.4.9",
+    "hoek": "~1.4.1"
   },
   "devDependencies": {
     "coffee-script": "~1.6.2"
