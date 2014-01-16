@@ -1,6 +1,6 @@
 {
   "name": "docpad-plugin-hapi",
-  "version": "2.0.9",
+  "version": "2.0.11",
   "description": "A fully customizable Hapi server for Docpad.",
   "homepage": "https://github.com/stongo/docpad-plugin-hapi",
   "keywords": [
@@ -38,7 +38,7 @@
   },
   "main": "./out/hapi.plugin.js",
   "scripts": {
-    "publish": "cake compile",
+    "prepublish": "cake compile",
     "test": "node ./out/hapi.test.js"
   }
 }
