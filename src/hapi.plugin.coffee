@@ -28,13 +28,6 @@ module.exports = (BasePlugin) ->
 
 			staticPath = path.join process.cwd(), staticPath
 
-			docpad.log "debug", "Copying out folder. outPath: #{outPath}, staticPath: #{staticPath}"
-
-			###ncp outPath, staticPath, (err) ->
-				return next(err) if err
-				docpad.log "Done copying out folder to #{staticPath}"
-				return next()###
-
 			wrench.copyDirRecursive outPath, staticPath, {forceDelete: true}, (err) ->
 				return next(err) if err
 				docpad.log "Done copying out folder to #{staticPath}"
@@ -45,9 +38,8 @@ module.exports = (BasePlugin) ->
 			docpad = @docpad
 			config = @config
 
-			docpad.log "config: #{Object.keys(config)}"
+			port = docpad.getConfig().port ? process.env.PORT ? process.env.VCAP_APP_PORT ? process.env.VMC_APP_PORT ? 9778
 
-			port = docpad.getPort()
 			hostname = docpad.getHostname()
 
 			# Shutdown Express

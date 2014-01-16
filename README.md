@@ -31,5 +31,13 @@ plugins:
             maxSockets: 2000
 ```
 
+### Deploying to Heroku or other Cloud Hosting
+
+Change Procfile to
+
+```
+web: node_modules/docpad-plugin-hapi/bin/docpad-hapi-server
+```
+
 ## License
 Licensed under the incredibly [permissive](http://en.wikipedia.org/wiki/Permissive_free_software_licence) [MIT License](http://creativecommons.org/licenses/MIT/)
