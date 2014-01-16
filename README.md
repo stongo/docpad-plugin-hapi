@@ -13,7 +13,7 @@ plugins:
         routes: [
             {
                 method: 'POST'
-                path: '/test'
+                path: '/api/test'
                 handler: (request, reply) ->
                     reply('test')
                 config:
@@ -22,7 +22,7 @@ plugins:
             },
             {
                 method: 'PUT'
-                path: '/hello'
+                path: '/api/hello'
                 handler: (request, reply) ->
                     reply('hello')
             }
