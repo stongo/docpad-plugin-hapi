@@ -29,21 +29,21 @@ DocPad.createInstance docpadConfig, (err,docpad) ->
 	(->
 		config = docpad.getConfig()
 
-		port = config.port ? process.env.PORT ? process.env.VCAP_APP_PORT ? process.env.VMC_APP_PORT ? 9778
+		port = process.env.PORT ? config.port ? process.env.VCAP_APP_PORT ? process.env.VMC_APP_PORT ? 9778
 
-		hostname = config.hostname ? process.env.HOSTNAME ? null
+		hostname = process.env.HOSTNAME ? config.hostname ? null
 
 		# Require Hapi server and start
 		server = require('../../lib/hapi-server.js')(docpad, config, port, hostname)
 
-		server.start ()->
-			console.log("Starting Hapi server on port #{port}")
+		return server.start ()->
+			return console.log("Starting Hapi server on port #{port}")
 	)()
 
 	# Generate and Serve
 	docpad.action action, (err) ->
 		# Check
-		return console.log(err.stack)  if err
+		return console.log(err.stack) if err
 
 		return
 		# Done
