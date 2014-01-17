@@ -40,6 +40,8 @@ module.exports = (BasePlugin) ->
 
 			port = docpad.getConfig().port ? process.env.PORT ? process.env.VCAP_APP_PORT ? process.env.VMC_APP_PORT ? 9778
 
+			port = parseInt(port,10)  if port and isNaN(port) is false
+
 			hostname = docpad.getHostname()
 
 			# Shutdown Express
