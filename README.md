@@ -1,4 +1,4 @@
-# Hapi Server Plugin for [DocPad](http://docpad.org)
+# [Hapi](http://spumko.github.io/) Server Plugin for [DocPad](http://docpad.org)
 
 A fully customizable Hapi server for docpad.
 
