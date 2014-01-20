@@ -5,7 +5,9 @@ A fully customizable Hapi server for docpad.
 ## Usage (more coming soon)
 
 In docpad.coffee or docpad.js, you can directly add routes as specified in [Hapi Documentation](https://github.com/spumko/hapi/blob/master/docs/Reference.md)
+
 Hapi plugins can easily be loaded. Plugins can access docpad through server.app.docpad. For example, to get docpad configuration, ```server.app.docpad.getConfig()```
+
 Also, server configuration can be overriden with the 'config' key
 
 ```coffee
