@@ -28,7 +28,7 @@ module.exports = {
                     config:
                         validate:
                             payload:
-                                test: Joi.string().min(3).max(8);
+                                test: Joi.string().min(3).max(8)
                 },
                 {
                     method: 'PUT'
