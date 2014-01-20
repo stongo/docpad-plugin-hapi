@@ -72,5 +72,10 @@ Change Procfile to
 web: node_modules/docpad-plugin-hapi/bin/docpad-hapi-server
 ```
 
+### Running with pm2 or forever
+```
+forever start node_modules/docpad-plugin-hapi/out/bin/docpad-hapi-server.js
+```
+
 ## License
 Licensed under the incredibly [permissive](http://en.wikipedia.org/wiki/Permissive_free_software_licence) [MIT License](http://creativecommons.org/licenses/MIT/)
