@@ -5,30 +5,61 @@ A fully customizable Hapi server for docpad.
 ## Usage (more coming soon)
 
 In docpad.coffee or docpad.js, you can directly add routes as specified in [Hapi Documentation](https://github.com/spumko/hapi/blob/master/docs/Reference.md)
+Hapi plugins can easily be loaded.
 Also, server configuration can be overriden with the 'config' key
 
 ```coffee
-plugins:
-    hapi:
-        routes: [
-            {
-                method: 'POST'
-                path: '/api/test'
-                handler: (request, reply) ->
-                    reply('test')
-                config:
-                    validate:
-                        query: false
-            },
-            {
-                method: 'PUT'
-                path: '/api/hello'
-                handler: (request, reply) ->
-                    reply('hello')
-            }
-        ],
-        config:
-            maxSockets: 2000
+# Require Joi for route validation
+Joi = require('joi');
+
+# Docpad Configuration Object
+module.exports = {
+    plugins:
+        hapi:
+            # router
+            routes: [
+                {
+                    method: 'POST'
+                    path: '/test'
+                    handler: (request, reply) ->
+                        reply('test');
+                    config:
+                        validate:
+                            payload:
+                                test: Joi.string().min(3).max(8);
+                },
+                {
+                    method: 'PUT'
+                    path: '/hello'
+                    handler: (request, reply) ->
+                        reply('hello');
+                }
+            ]
+            # server plugins
+            plugins: [
+                {
+                    good:
+                        require: 'good',
+                        options:
+                            subscribers:
+                                console: ['request', 'log', 'error']
+                },
+                {
+                    yar:
+                        require: 'yar',
+                        options:
+                            cookieOptions:
+                                password: 'password'
+                },
+                    customPlugin:
+                        require: './lib/customPlugin',
+                        options:
+                            cookieOptions:
+                                password: 'password'
+            ]
+            # server config
+            config:
+                maxSockets: 2000
 ```
 
 ### Deploying to Heroku or other Cloud Hosting
