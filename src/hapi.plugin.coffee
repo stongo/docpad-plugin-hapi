@@ -8,7 +8,7 @@ module.exports = (BasePlugin) ->
 		config = docpad.getConfig()
 		hapiConfig = config.plugins.hapi
 
-		generated: (opts, next) ->
+		generateAfter: (opts, next) ->
 			# Prepare
 			docpad = @docpad
 			docpadConfig = docpad.getConfig()
