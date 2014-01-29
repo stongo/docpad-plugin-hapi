@@ -5,10 +5,11 @@ module.exports = (BasePlugin) ->
 	class HapiPlugin extends BasePlugin
 		name: 'hapi'
 
-		config = docpad.getConfig()
-		hapiConfig = config.plugins.hapi
+		console.log(process.env.NODE_ENV);
 
 		generateAfter: (opts, next) ->
+			if not process.env.NODE_ENV? or process.env.NODE_ENV? and process.env.NODE_ENV isnt 'production' then return next()
+
 			# Prepare
 			docpad = @docpad
 			docpadConfig = docpad.getConfig()
