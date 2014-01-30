@@ -64,6 +64,10 @@ module.exports = {
                 maxSockets: 2000
 ```
 
+### Clean URLs
+
+If you want to use cleanurls, you must use https://github.com/stongo/docpad-plugin-cleanurls/tree/staticServer and follow instructions for using a custom static server. A [pull requests](https://github.com/docpad/docpad-plugin-cleanurls/pull/14) exists for this feature in docpad-plugins-cleanurls
+
 ### Deploying to Heroku or other Cloud Hosting
 
 Change Procfile to
