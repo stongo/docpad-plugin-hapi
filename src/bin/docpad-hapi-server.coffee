@@ -29,7 +29,7 @@ DocPad.createInstance docpadConfig, (err,docpad) ->
 	Async.parallel([
 		# Start Hapi Server
 		(next) ->
-			config = docpad.getConfig()
+			config = if docpad.getConfig().plugins?.hapi? then docpad.getConfig().plugins.hapi else {}
 
 			port = process.env.PORT ? config.port ? process.env.VCAP_APP_PORT ? process.env.VMC_APP_PORT ? 9778
 
