@@ -62,11 +62,13 @@ module.exports = {
             # server config
             config:
                 maxSockets: 2000
+            # clean urls
+            defaultExtension: 'html' # default value. Specify another extension if desired.
 ```
 
 ### Clean URLs
 
-If you want to use cleanurls, you must use https://github.com/stongo/docpad-plugin-cleanurls/tree/staticServer and follow instructions for using a custom static server. A [pull requests](https://github.com/docpad/docpad-plugin-cleanurls/pull/14) exists for this feature in docpad-plugins-cleanurls
+Clean URLs are enabled by default for files with .html extension. To change Clean URL extension, set plugin settings property "defaultExtension"
 
 ### Deploying to Heroku or other Cloud Hosting
 
