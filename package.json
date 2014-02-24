@@ -35,7 +35,10 @@
     "async": "0.2.9"
   },
   "devDependencies": {
-    "coffee-script": "~1.6.2"
+    "coffee-script": "~1.6.2",
+    "lab": "0.1.x",
+    "hapi": "2.x.x",
+    "docpad": "6.x.x"
   },
   "main": "./out/hapi.plugin.js",
   "scripts": {
