@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('../out/bin/docpad-hapi-server');
+require('../lib/bin/docpad-hapi-server');
