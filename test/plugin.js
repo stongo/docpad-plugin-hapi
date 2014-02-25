@@ -23,7 +23,9 @@ describe('docpad-plugin-hapi', function () {
     var config = {};
     var port = 8080;
     var hostname = 'localhost';
-    var docpadConfig = {};
+    var docpadConfig = {
+        outPath: __dirname + '/out'
+    };
 
     it('loads a docpad instance', function (done) {
 
@@ -81,7 +83,7 @@ describe('docpad-plugin-hapi', function () {
 
             var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
 
-            server.inject('/', function (res) {
+            server.inject('/index.html', function (res) {
                 expect(res.statusCode).to.equal(200);
                 done();
             });
