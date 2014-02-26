@@ -1,6 +1,6 @@
 {
   "name": "docpad-plugin-hapi",
-  "version": "2.3.11",
+  "version": "2.3.12",
   "description": "A fully customizable Hapi server for Docpad.",
   "homepage": "https://github.com/stongo/docpad-plugin-hapi",
   "keywords": [
