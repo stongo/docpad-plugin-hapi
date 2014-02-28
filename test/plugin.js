@@ -20,7 +20,7 @@ var it = Lab.test;
 describe('docpad-plugin-hapi', function () {
 
     var table;
-    var config = {};
+    var config = { test: true };
     var port = 8080;
     var hostname = 'localhost';
     var docpadConfig = {
