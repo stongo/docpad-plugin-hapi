@@ -20,11 +20,12 @@ var it = Lab.test;
 describe('docpad-plugin-hapi', function () {
 
     var table;
-    var config = { test: true };
+    var config = {};
     var port = 8080;
     var hostname = 'localhost';
     var docpadConfig = {
-        outPath: __dirname + '/out'
+        outPath: __dirname + '/out',
+        srcPath: __dirname + '/src'
     };
 
     it('loads a docpad instance', function (done) {
@@ -81,12 +82,18 @@ describe('docpad-plugin-hapi', function () {
 
         DocPad.createInstance(docpadConfig, function (err, docpad) {
 
-            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+            docpad.action('generate', function(err,result){
 
-            server.inject('/index.html', function (res) {
-                expect(res.statusCode).to.equal(200);
-                done();
+                expect(err).to.not.exist;
+
+                var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+                server.inject('/index.html', function (res) {
+                    expect(res.statusCode).to.equal(200);
+                    done();
+                });
             });
+
         });
 
     });
@@ -95,11 +102,17 @@ describe('docpad-plugin-hapi', function () {
 
         DocPad.createInstance(docpadConfig, function (err, docpad) {
 
-            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+            docpad.action('generate', function(err,result){
 
-            server.inject('/foo/index.html', function (res) {
-                expect(res.statusCode).to.equal(404);
-                done();
+                expect(err).to.not.exist;
+
+                var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+                server.inject('/foo/index.html', function (res) {
+                    expect(res.statusCode).to.equal(404);
+                    done();
+                });
+
             });
         });
 
