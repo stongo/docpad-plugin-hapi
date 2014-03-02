@@ -160,4 +160,31 @@ describe('docpad-plugin-hapi', function () {
         });
     });
 
+    it('allows routes defined in docpad configuration', function (done) {
+
+        config = {
+            routes: [{
+                path: '/test1',
+                method: 'POST',
+                handler: function(reply, response) {
+                    return reply('test route');
+                }
+            }]
+        };
+
+        DocPad.createInstance(docpadConfig, function (err, docpad) {
+
+            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+            server.inject('/test1', function (res) {
+                expect(res.statusCode).to.equal(200);
+                done();
+            });
+
+            delete config.routes;
+
+            done();
+        });
+    });
+
 });
