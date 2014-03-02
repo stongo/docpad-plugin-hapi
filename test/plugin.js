@@ -118,4 +118,46 @@ describe('docpad-plugin-hapi', function () {
 
     });
 
+    it('should load hapi plugins', function (done) {
+
+        DocPad.createInstance(docpadConfig, function (err, docpad) {
+
+            config = {
+                plugins: [{
+                    test: {
+                        require: __dirname + '/--test1'
+                    }
+                }]
+            };
+
+            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+            expect(server.plugins).to.have.property('--test1');
+
+            delete config.plugins;
+
+            done();
+        });
+    });
+
+    it('allows custom hapi server configuration', function (done) {
+
+        config = {
+            config: {
+                maxSockets: 1001
+            }
+        };
+
+        DocPad.createInstance(docpadConfig, function (err, docpad) {
+
+            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+            expect(server).to.have.deep.property('settings.maxSockets', 1001);
+
+            delete config.config;
+
+            done();
+        });
+    });
+
 });
