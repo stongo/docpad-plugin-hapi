@@ -140,6 +140,28 @@ describe('docpad-plugin-hapi', function () {
         });
     });
 
+    it('should catch hapi plugin loading errors and continue', function (done) {
+
+        DocPad.createInstance(docpadConfig, function (err, docpad) {
+
+            config = {
+                plugins: [{
+                    test: {
+                        require: __dirname + '/--test2'
+                    }
+                }]
+            };
+
+            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+            expect(server.plugins).not.to.have.property('--test2');
+
+            delete config.plugins;
+
+            done();
+        });
+    });
+
     it('allows custom hapi server configuration', function (done) {
 
         config = {
