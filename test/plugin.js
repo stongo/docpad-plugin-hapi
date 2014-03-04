@@ -168,6 +168,9 @@ describe('docpad-plugin-hapi', function () {
 
         server.inject('/clean', function (res) {
             expect(res.statusCode).to.equal(200);
+
+            delete config.defaultExtension;
+
             done();
         });
 
