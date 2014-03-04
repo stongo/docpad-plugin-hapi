@@ -31,14 +31,17 @@
     "hapi": "2.6.x",
     "wrench": "1.5.x",
     "path": "~0.4.9",
-    "hoek": "~1.4.1",
+    "hoek": "~1.5.0",
     "async": "0.2.9"
   },
   "devDependencies": {
-    "coffee-script": "~1.6.2"
+    "coffee-script": "~1.6.2",
+    "lab": "0.1.x",
+    "hapi": "2.x.x",
+    "docpad": "6.x.x"
   },
-  "main": "./out/hapi.plugin.js",
+  "main": "./lib/hapi.plugin.js",
   "scripts": {
-    "test": "node ./out/hapi.test.js"
+    "test": "make test"
   }
 }
