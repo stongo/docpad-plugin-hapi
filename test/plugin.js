@@ -92,6 +92,50 @@ describe('docpad-plugin-hapi', function () {
 
     });
 
+    it('returns a 304 if etag matches', function (done) {
+
+            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+            server.inject('/index.html', function (res1) {
+                expect(res1.statusCode).to.equal(200);
+                expect(res1.headers.etag).to.exist;
+
+                var etag1 = res1.headers.etag;
+
+                expect(etag1.slice(0, 1)).to.equal('"');
+                expect(etag1.slice(-1)).to.equal('"');
+
+                server.inject({ url: '/index.html', headers: { 'if-none-match': etag1 } }, function (res2) {
+
+                    expect(res2.statusCode).to.equal(304);
+                    expect(res2.headers).to.not.have.property('content-length');
+                    expect(res2.headers).to.not.have.property('etag');
+                    expect(res2.headers).to.not.have.property('last-modified');
+
+                    done();
+                });
+            });
+
+    });
+
+    it('returns a 304 when the request has if-modified-since and the response hasn\'t been modified since', function (done) {
+
+            var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+            server.inject('/index.html', function (res1) {
+
+                server.inject({ url: '/index.html', headers: { 'if-modified-since': res1.headers.date } }, function (res2) {
+
+                    expect(res2.statusCode).to.equal(304);
+                    expect(res2.headers).to.not.have.property('content-length');
+                    expect(res2.headers).to.not.have.property('etag');
+                    expect(res2.headers).to.not.have.property('last-modified');
+                    done();
+                });
+            });
+
+    });
+
     it('should load hapi plugins', function (done) {
 
         config = {
