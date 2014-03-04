@@ -160,6 +160,25 @@ describe('docpad-plugin-hapi', function () {
         config = {
             plugins: [{
                 test: {
+                    require: __dirname + '/--test'
+                }
+            }]
+        };
+
+        var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+        expect(server.plugins).not.to.have.property('--test');
+
+        delete config.plugins;
+
+        done();
+    });
+
+    it('should catch hapi plugin exceptions and continue', function (done) {
+
+        config = {
+            plugins: [{
+                test: {
                     require: __dirname + '/--test2'
                 }
             }]
@@ -214,6 +233,19 @@ describe('docpad-plugin-hapi', function () {
         delete config.routes;
 
         done();
+    });
+
+    it('allows a default clean urls extension to be set in docpad configuration', function (done) {
+        config = {
+            defaultExtension: 'txt'
+        };
+
+        var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+            server.inject('/clean', function (res) {
+                expect(res.statusCode).to.equal(200);
+                done();
+            });
     });
 
 });
