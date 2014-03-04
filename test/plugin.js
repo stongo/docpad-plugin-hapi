@@ -136,6 +136,43 @@ describe('docpad-plugin-hapi', function () {
 
     });
 
+    it('does not try to serve an empty file from in-memory database', function (done) {
+
+        var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+        server.inject('/empty.html', function (res) {
+            expect(res.statusCode).to.equal(200);
+            done();
+        });
+
+    });
+
+    it('supports clean urls', function (done) {
+
+        var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+        server.inject('/test', function (res) {
+            expect(res.statusCode).to.equal(200);
+            done();
+        });
+
+    });
+
+    it('can set a different extension as default for clean urls', function (done) {
+
+        config = {
+            defaultExtension: 'txt'
+        };
+
+        var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
+
+        server.inject('/clean', function (res) {
+            expect(res.statusCode).to.equal(200);
+            done();
+        });
+
+    });
+
     it('should load hapi plugins', function (done) {
 
         config = {
@@ -215,7 +252,7 @@ describe('docpad-plugin-hapi', function () {
         config = {
             routes: [{
                 path: '/test1',
-                method: 'POST',
+                method: 'GET',
                 handler: function(reply, response) {
                     return reply('test route');
                 }
@@ -233,19 +270,6 @@ describe('docpad-plugin-hapi', function () {
         delete config.routes;
 
         done();
-    });
-
-    it('allows a default clean urls extension to be set in docpad configuration', function (done) {
-        config = {
-            defaultExtension: 'txt'
-        };
-
-        var server = require('../lib/hapi.server.js')(docpad, config, port, hostname);
-
-            server.inject('/clean', function (res) {
-                expect(res.statusCode).to.equal(200);
-                done();
-            });
     });
 
 });
