@@ -80,7 +80,7 @@ web: node_modules/docpad-plugin-hapi/bin/docpad-hapi-server
 
 ### Running with pm2 or forever
 ```
-forever start node_modules/docpad-plugin-hapi/out/bin/docpad-hapi-server.js
+forever start node_modules/docpad-plugin-hapi/lib/bin/docpad-hapi-server.js
 ```
 
 ## License
