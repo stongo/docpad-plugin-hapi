@@ -1,6 +1,6 @@
 {
   "name": "docpad-plugin-hapi",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "A fully customizable Hapi server for Docpad.",
   "homepage": "https://github.com/stongo/docpad-plugin-hapi",
   "keywords": [
@@ -28,7 +28,7 @@
     "docpad": ">=6"
   },
   "dependencies": {
-    "hapi": "2.6.x",
+    "hapi": "3.0.x",
     "wrench": "1.5.x",
     "path": "~0.4.9",
     "hoek": "~1.5.0",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "coffee-script": "~1.6.2",
     "lab": "0.1.x",
-    "hapi": "2.x.x",
+    "hapi": "3.x.x",
     "docpad": "6.x.x"
   },
   "main": "./lib/hapi.plugin.js",
